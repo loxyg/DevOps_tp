@@ -62,5 +62,5 @@ resource "heroku_pipeline_coupling" "production" {
 resource "heroku_pipeline_coupling" "QA" {
   app = heroku_app.app_QA.name
   pipeline = heroku_pipeline.pipeline.id
-  stage = "development" 
+  stage = "review" 
 }
