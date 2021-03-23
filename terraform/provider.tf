@@ -32,13 +32,13 @@ resource "heroku_addon" "db_staging" {
   plan = "heroku-postgresql:hobby-dev"
 }
 
-resource "heroku_app" "app_QA" {
-  name = "app-qa-tp"
+resource "heroku_app" "app_development" {
+  name = "app-development-tp"
   region = "us"
 }
 
-resource "heroku_addon" "db_QA" {
-  app  = heroku_app.app_QA.name
+resource "heroku_addon" "db_development" {
+  app  = heroku_app.app_development.name
   plan = "heroku-postgresql:hobby-dev"
 }
 #Pour créer la pipeline
@@ -59,8 +59,8 @@ resource "heroku_pipeline_coupling" "production" {
   stage = "production" 
 }
 
-resource "heroku_pipeline_coupling" "QA" {
-  app = heroku_app.app_QA.name
+resource "heroku_pipeline_coupling" "development" {
+  app = heroku_app.app_development.name
   pipeline = heroku_pipeline.pipeline.id
-  stage = "review" 
+  stage = "development" 
 }

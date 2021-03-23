@@ -1,7 +1,6 @@
 variable "heroku_email" {
     type = string
     description = "The email address of your Heroku account"
-
 }
 
 
