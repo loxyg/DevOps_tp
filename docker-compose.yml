@@ -1,0 +1,20 @@
+version: "3"
+
+
+services:
+  postgres:
+    container_name: "postgres"
+    image: "postgres:13-alpine"
+    restart: "unless-stopped"
+    environment:
+      POSTGRES_DB: "cours"
+      POSTGRES_USER: "cours"
+      POSTGRES_PASSWORD: "cours"
+    volumes:
+      - "./migrations:/docker-entrypoint-initdb.d"
+      - "cours:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+
+volumes:
+  cours:
